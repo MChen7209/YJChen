@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+	<Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+	<Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+	<ProductVersion>10.0.20506</ProductVersion>
+	<SchemaVersion>2.0</SchemaVersion>
+	<ProjectGuid>{6DFB61EC-B7A7-A5E8-EF42-0DEB65DFEA9D}</ProjectGuid>
+	<OutputType>Library</OutputType>
+	<AppDesignerFolder>Properties</AppDesignerFolder>
+	<RootNamespace></RootNamespace>
+	<AssemblyName>Assembly-CSharp</AssemblyName>
+	<TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+	<FileAlignment>512</FileAlignment>
+	<BaseDirectory>Assets</BaseDirectory>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+	<DebugSymbols>true</DebugSymbols>
+	<DebugType>full</DebugType>
+	<Optimize>false</Optimize>
+	<OutputPath>Temp\bin\Debug\</OutputPath>
+	<DefineConstants>DEBUG;TRACE;UNITY_4_5_0;UNITY_4_5;UNITY_STANDALONE_WIN;ENABLE_MICROPHONE;ENABLE_TEXTUREID_MAP;ENABLE_UNITYEVENTS;ENABLE_NEW_HIERARCHY ;ENABLE_AUDIO_FMOD;UNITY_STANDALONE;ENABLE_MONO;ENABLE_TERRAIN;ENABLE_SUBSTANCE;ENABLE_GENERICS;INCLUDE_WP8SUPPORT;ENABLE_MOVIES;ENABLE_WWW;ENABLE_IMAGEEFFECTS;ENABLE_WEBCAM;INCLUDE_METROSUPPORT;RENDER_SOFTWARE_CURSOR;ENABLE_NETWORK;ENABLE_PHYSICS;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_2D_PHYSICS;ENABLE_SHADOWS;ENABLE_AUDIO;ENABLE_NAVMESH_CARVING;ENABLE_DUCK_TYPING;ENABLE_SINGLE_INSTANCE_BUILD_SETTING;ENABLE_PROFILER;UNITY_EDITOR;UNITY_EDITOR_OSX;UNITY_TEAM_LICENSE;UNITY_PRO_LICENSE</DefineConstants>
+	<ErrorReport>prompt</ErrorReport>
+	<WarningLevel>4</WarningLevel>
+	<NoWarn>0169</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+	<DebugType>pdbonly</DebugType>
+	<Optimize>true</Optimize>
+	<OutputPath>Temp\bin\Release\</OutputPath>
+	<DefineConstants>TRACE</DefineConstants>
+	<ErrorReport>prompt</ErrorReport>
+	<WarningLevel>4</WarningLevel>
+	<NoWarn>0169</NoWarn>
+  </PropertyGroup>
+  <ItemGroup>
+	<Reference Include="System" />
+    <Reference Include="System.XML" />
+	<Reference Include="System.Core" />
+	<Reference Include="System.Xml.Linq" />
+	<Reference Include="UnityEngine">
+	  <HintPath>/Applications/Unity/Unity.app/Contents/Frameworks/Managed/UnityEngine.dll</HintPath>
+	</Reference>
+	<Reference Include="UnityEditor">
+	  <HintPath>/Applications/Unity/Unity.app/Contents/Frameworks/Managed/UnityEditor.dll</HintPath>
+	</Reference>
+  </ItemGroup>
+  <ItemGroup>
+     <Compile Include="Assets\2d Art Pack\Standard Assets\Image Effects (Pro Only)\BlurEffect.cs" />
+     <Compile Include="Assets\2d Art Pack\Standard Assets\Image Effects (Pro Only)\ColorCorrectionEffect.cs" />
+     <Compile Include="Assets\2d Art Pack\Standard Assets\Image Effects (Pro Only)\ContrastStretchEffect.cs" />
+     <Compile Include="Assets\2d Art Pack\Standard Assets\Image Effects (Pro Only)\GlowEffect.cs" />
+     <Compile Include="Assets\2d Art Pack\Standard Assets\Image Effects (Pro Only)\GrayscaleEffect.cs" />
+     <Compile Include="Assets\2d Art Pack\Standard Assets\Image Effects (Pro Only)\ImageEffectBase.cs" />
+     <Compile Include="Assets\2d Art Pack\Standard Assets\Image Effects (Pro Only)\ImageEffects.cs" />
+     <Compile Include="Assets\2d Art Pack\Standard Assets\Image Effects (Pro Only)\MotionBlur.cs" />
+     <Compile Include="Assets\2d Art Pack\Standard Assets\Image Effects (Pro Only)\NoiseEffect.cs" />
+     <Compile Include="Assets\2d Art Pack\Standard Assets\Image Effects (Pro Only)\SSAOEffect.cs" />
+     <Compile Include="Assets\2d Art Pack\Standard Assets\Image Effects (Pro Only)\SepiaToneEffect.cs" />
+     <Compile Include="Assets\2d Art Pack\Standard Assets\Image Effects (Pro Only)\TwirlEffect.cs" />
+     <Compile Include="Assets\2d Art Pack\Standard Assets\Image Effects (Pro Only)\VortexEffect.cs" />
+     <Compile Include="Assets\2d Art Pack\Unity 2d Project Assets\Scripts\BackgroundParallax.cs" />
+     <Compile Include="Assets\2d Art Pack\Unity 2d Project Assets\Scripts\BackgroundPropSpawner.cs" />
+     <Compile Include="Assets\2d Art Pack\Unity 2d Project Assets\Scripts\Bomb.cs" />
+     <Compile Include="Assets\2d Art Pack\Unity 2d Project Assets\Scripts\BombPickup.cs" />
+     <Compile Include="Assets\2d Art Pack\Unity 2d Project Assets\Scripts\Destroyer.cs" />
+     <Compile Include="Assets\2d Art Pack\Unity 2d Project Assets\Scripts\Gun.cs" />
+     <Compile Include="Assets\2d Art Pack\Unity 2d Project Assets\Scripts\HealthPickup.cs" />
+     <Compile Include="Assets\2d Art Pack\Unity 2d Project Assets\Scripts\LayBombs.cs" />
+     <Compile Include="Assets\2d Art Pack\Unity 2d Project Assets\Scripts\ParticleSortingLayer.cs" />
+     <Compile Include="Assets\2d Art Pack\Unity 2d Project Assets\Scripts\Pauser.cs" />
+     <Compile Include="Assets\2d Art Pack\Unity 2d Project Assets\Scripts\PickupSpawner.cs" />
+     <Compile Include="Assets\2d Art Pack\Unity 2d Project Assets\Scripts\Rocket.cs" />
+     <Compile Include="Assets\2d Art Pack\Unity 2d Project Assets\Scripts\ScoreShadow.cs" />
+     <Compile Include="Assets\2d Art Pack\Unity 2d Project Assets\Scripts\SetParticleSortingLayer.cs" />
+     <Compile Include="Assets\2d Art Pack\Unity 2d Project Assets\Scripts\Spawner.cs" />
+     <Compile Include="Assets\Animation\Heroes\Warrior\WarriorSpinny.cs" />
+     <Compile Include="Assets\Elementals\Scripts\OrbitCamera.cs" />
+     <Compile Include="Assets\Elementals\Scripts\TestParticles.cs" />
+     <Compile Include="Assets\Ferr\2D\Scripts\Ferr2D_Animator.cs" />
+     <Compile Include="Assets\Ferr\2D\Scripts\Ferr2D_IPath.cs" />
+     <Compile Include="Assets\Ferr\2D\Scripts\Ferr2D_Path.cs" />
+     <Compile Include="Assets\Ferr\2D\Scripts\Ferr2D_Sprite.cs" />
+     <Compile Include="Assets\Ferr\2DTerrain\Examples\Assets\AutoBoxCollider.cs" />
+     <Compile Include="Assets\Ferr\2DTerrain\Examples\Assets\CameraMove.cs" />
+     <Compile Include="Assets\Ferr\2DTerrain\Examples\Assets\InfiniteTerrain.cs" />
+     <Compile Include="Assets\Ferr\2DTerrain\Examples\Assets\InfiniteTerrainCamera.cs" />
+     <Compile Include="Assets\Ferr\2DTerrain\Examples\Assets\ProceduralInsert.cs" />
+     <Compile Include="Assets\Ferr\2DTerrain\Examples\Assets\Toss.cs" />
+     <Compile Include="Assets\Ferr\2DTerrain\Examples\Assets\TumbleweedMotion.cs" />
+     <Compile Include="Assets\Ferr\2DTerrain\Examples\Assets\TumbleweedSpawner.cs" />
+     <Compile Include="Assets\Ferr\2DTerrain\Scripts\Ferr2DT_DynamicMesh.cs" />
+     <Compile Include="Assets\Ferr\2DTerrain\Scripts\Ferr2DT_PathTerrain.cs" />
+     <Compile Include="Assets\Ferr\2DTerrain\Scripts\Ferr2DT_TerrainMaterial.cs" />
+     <Compile Include="Assets\Ferr\2DTerrain\Scripts\Ferr2DT_Triangulator.cs" />
+     <Compile Include="Assets\Ferr\2DTerrain\Scripts\LibTessDotNet\Dict.cs" />
+     <Compile Include="Assets\Ferr\2DTerrain\Scripts\LibTessDotNet\Geom.cs" />
+     <Compile Include="Assets\Ferr\2DTerrain\Scripts\LibTessDotNet\Mesh.cs" />
+     <Compile Include="Assets\Ferr\2DTerrain\Scripts\LibTessDotNet\MeshUtils.cs" />
+     <Compile Include="Assets\Ferr\2DTerrain\Scripts\LibTessDotNet\PriorityHeap.cs" />
+     <Compile Include="Assets\Ferr\2DTerrain\Scripts\LibTessDotNet\PriorityQueue.cs" />
+     <Compile Include="Assets\Ferr\2DTerrain\Scripts\LibTessDotNet\Sweep.cs" />
+     <Compile Include="Assets\Ferr\2DTerrain\Scripts\LibTessDotNet\Tess.cs" />
+     <Compile Include="Assets\Ferr\Common\Ferr_Color.cs" />
+     <Compile Include="Assets\Ferr\Common\Ferr_JSON.cs" />
+     <Compile Include="Assets\MeleeWeaponTrail\Example\Scripts\LookAtTarget.cs" />
+     <Compile Include="Assets\MeleeWeaponTrail\Example\Scripts\MouseMove.cs" />
+     <Compile Include="Assets\MeleeWeaponTrail\Example\Scripts\SwooshTest.cs" />
+     <Compile Include="Assets\MeleeWeaponTrail\Scripts\Interpolate.cs" />
+     <Compile Include="Assets\MeleeWeaponTrail\Scripts\MeleeWeaponTrail.cs" />
+     <Compile Include="Assets\ProgressBar\Progress Bar stuff\PositionProgressBar.cs" />
+     <Compile Include="Assets\Scripts\Archer\ArcherAttack.cs" />
+     <Compile Include="Assets\Scripts\Archer\ArcherController.cs" />
+     <Compile Include="Assets\Scripts\Archer\Arrow.cs" />
+     <Compile Include="Assets\Scripts\Archer\HookShot.cs" />
+     <Compile Include="Assets\Scripts\Archer\SwingController.cs" />
+     <Compile Include="Assets\Scripts\Camera\CameraFollow.cs" />
+     <Compile Include="Assets\Scripts\Cooldown\ArrowGUI.cs" />
+     <Compile Include="Assets\Scripts\Cooldown\DashGUI.cs" />
+     <Compile Include="Assets\Scripts\Cooldown\FireGUI.cs" />
+     <Compile Include="Assets\Scripts\Cooldown\IceGUI.cs" />
+     <Compile Include="Assets\Scripts\Cooldown\LightningGUI.cs" />
+     <Compile Include="Assets\Scripts\Cooldown\SlashGUI.cs" />
+     <Compile Include="Assets\Scripts\Cooldown\SpinningGUI.cs" />
+     <Compile Include="Assets\Scripts\Enemies\Enemy.cs" />
+     <Compile Include="Assets\Scripts\Enemies\WarriorAI\DamagePlayer.cs" />
+     <Compile Include="Assets\Scripts\Enemies\WarriorAI\EnemyAI.cs" />
+     <Compile Include="Assets\Scripts\Enemies\WarriorAI\EnemyMove.cs" />
+     <Compile Include="Assets\Scripts\Parallaxing.cs" />
+     <Compile Include="Assets\Scripts\Props\KeyRecieverLv1.cs" />
+     <Compile Include="Assets\Scripts\Props\Ladder.cs" />
+     <Compile Include="Assets\Scripts\Props\Torch.cs" />
+     <Compile Include="Assets\Scripts\Props\objectUpAndDown.cs" />
+     <Compile Include="Assets\Scripts\Universal\ChangeCharacter.cs" />
+     <Compile Include="Assets\Scripts\Universal\FollowPlayer.cs" />
+     <Compile Include="Assets\Scripts\Universal\PlayerController.cs" />
+     <Compile Include="Assets\Scripts\Universal\PlayerHealth.cs" />
+     <Compile Include="Assets\Scripts\Universal\Remover.cs" />
+     <Compile Include="Assets\Scripts\Universal\SetSortingLayer.cs" />
+     <Compile Include="Assets\Scripts\Universal\SlowLightShift.cs" />
+     <Compile Include="Assets\Scripts\Universal\UnifiedSuperClass.cs" />
+     <Compile Include="Assets\Scripts\Warrior\WarriorAttack.cs" />
+     <Compile Include="Assets\Scripts\Warrior\WarriorController.cs" />
+     <Compile Include="Assets\Scripts\Warrior\WarriorSkills\ShieldDash.cs" />
+     <Compile Include="Assets\Scripts\Warrior\WarriorSkills\SpinTrailScript.cs" />
+     <Compile Include="Assets\Scripts\Warrior\WarriorSkills\SwordHit.cs" />
+     <Compile Include="Assets\Scripts\Wizard\PlayerControl.cs" />
+     <Compile Include="Assets\Scripts\Wizard\SKills\FireballScript.cs" />
+     <Compile Include="Assets\Scripts\Wizard\SKills\IceBallScript.cs" />
+     <Compile Include="Assets\Scripts\Wizard\SKills\IceBlawkOpaque.cs" />
+     <Compile Include="Assets\Scripts\Wizard\SKills\IceRadiusLimit.cs" />
+     <Compile Include="Assets\Scripts\Wizard\SKills\LightBallScript.cs" />
+     <Compile Include="Assets\Scripts\Wizard\SKills\LightningBolt.cs" />
+     <Compile Include="Assets\Scripts\Wizard\SKills\LightningNode.cs" />
+     <Compile Include="Assets\Scripts\Wizard\SKills\LightningStrike.cs" />
+     <Compile Include="Assets\Scripts\Wizard\WizardAttack.cs" />
+     <None Include="Assets\Ferr\2DTerrain\Shaders\UnlitColoredTint.shader" />
+     <None Include="Assets\2d Art Pack\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\_BloomAndFlares\BlendOneOne.shader" />
+     <None Include="Assets\2d Art Pack\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\NoiseEffectShaderRGB.shader" />
+     <None Include="Assets\2d Art Pack\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\_DepthOfField\SeparableWeightedBlurDof34.shader" />
+     <None Include="Assets\2d Art Pack\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\GlowConeTap.shader" />
+     <None Include="Assets\Ferr\2DTerrain\Examples\Assets\Materials\UnitColoredTransparent.shader" />
+     <None Include="Assets\2d Art Pack\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\SunShaftsComposite.shader" />
+     <None Include="Assets\Ferr\Docs\Ferr2DTerrainTool - Readme.txt" />
+     <None Include="Assets\2d Art Pack\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\ColorCorrectionCurves.shader" />
+     <None Include="Assets\2d Art Pack\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\ScreenSpaceAmbientObscurance.shader" />
+     <None Include="Assets\2d Art Pack\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\_Antialiasing\NFAA.shader" />
+     <None Include="Assets\2d Art Pack\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\_DepthOfField\TiltShiftHdrLensBlur.shader" />
+     <None Include="Assets\MeleeWeaponTrail\README.txt" />
+     <None Include="Assets\2d Art Pack\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\_BloomAndFlares\VignetteShader.shader" />
+     <None Include="Assets\2d Art Pack\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\_DepthOfField\DepthOfFieldScatter.shader" />
+     <None Include="Assets\Ferr\2DTerrain\Shaders\LitColored.shader" />
+     <None Include="Assets\2d Art Pack\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\MotionBlur.shader" />
+     <None Include="Assets\2d Art Pack\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\_BloomAndFlares\MobileBloom.shader" />
+     <None Include="Assets\2d Art Pack\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\GlowCompose.shader" />
+     <None Include="Assets\2d Art Pack\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\Contrast Stretch\MinMaxReduction.shader" />
+     <None Include="Assets\2d Art Pack\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\_Antialiasing\SSAA.shader" />
+     <None Include="Assets\2d Art Pack\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\RadialBlur.shader" />
+     <None Include="Assets\2d Art Pack\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\_DepthOfField\DepthOfFieldDX11.shader" />
+     <None Include="Assets\2d Art Pack\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\ContrastComposite.shader" />
+     <None Include="Assets\2d Art Pack\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\_Antialiasing\FXAAPreset3.shader" />
+     <None Include="Assets\2d Art Pack\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\FisheyeShader.shader" />
+     <None Include="Assets\2d Art Pack\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\Contrast Stretch\Apply.shader" />
+     <None Include="Assets\Ferr\2DTerrain\Examples\Assets\Materials\UnlitColored.shader" />
+     <None Include="Assets\Ferr\2DTerrain\Shaders\LitCommon.cginc" />
+     <None Include="Assets\2d Art Pack\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\_DepthOfField\DepthOfField34.shader" />
+     <None Include="Assets\2d Art Pack\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\_BloomAndFlares\MobileBlur.shader" />
+     <None Include="Assets\2d Art Pack\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\SSAOShader.shader" />
+     <None Include="Assets\2d Art Pack\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\ConvertDepth.shader" />
+     <None Include="Assets\2d Art Pack\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\ColorCorrectionCurvesSimple.shader" />
+     <None Include="Assets\2d Art Pack\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\NoiseEffectShaderYUV.shader" />
+     <None Include="Assets\2d Art Pack\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\GlowEffectDownsample.shader" />
+     <None Include="Assets\2d Art Pack\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\CreaseApply.shader" />
+     <None Include="Assets\2d Art Pack\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\ChromaticAberrationShader.shader" />
+     <None Include="Assets\Ferr\2DTerrain\Shaders\UnlitColoredTintTransparent.shader" />
+     <None Include="Assets\2d Art Pack\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\GlobalFog.shader" />
+     <None Include="Assets\Elementals\!Readme.txt" />
+     <None Include="Assets\Ferr\2DTerrain\Shaders\LightmapColoredTransparent.shader" />
+     <None Include="Assets\2d Art Pack\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\Contrast Stretch\Luminance.shader" />
+     <None Include="Assets\2d Art Pack\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\ColorCorrectionSelective.shader" />
+     <None Include="Assets\2d Art Pack\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\_DepthOfField\Bokeh34.shader" />
+     <None Include="Assets\2d Art Pack\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\CameraMotionBlurDX11.shader" />
+     <None Include="Assets\2d Art Pack\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\_BloomAndFlares\SeparableBlurPlus.shader" />
+     <None Include="Assets\2d Art Pack\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\_BloomAndFlares\MultiPassHollywoodFlares.shader" />
+     <None Include="Assets\2d Art Pack\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\BlurEffectConeTaps.shader" />
+     <None Include="Assets\2d Art Pack\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\CameraMotionBlur.shader" />
+     <None Include="Assets\2d Art Pack\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\_Antialiasing\DLAA.shader" />
+     <None Include="Assets\2d Art Pack\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\NoiseAndGrainDX11.shader" />
+     <None Include="Assets\2d Art Pack\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\_BloomAndFlares\BrightPassFilter2.shader" />
+     <None Include="Assets\Ferr\2DTerrain\Shaders\UnlitWavyTransparent.shader" />
+     <None Include="Assets\2d Art Pack\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\_DepthOfField\SeparableBlur.shader" />
+     <None Include="Assets\2d Art Pack\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\MotionBlurClear.shader" />
+     <None Include="Assets\2d Art Pack\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\ColorCorrectionEffect.shader" />
+     <None Include="Assets\2d Art Pack\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\GrayscaleEffect.shader" />
+     <None Include="Assets\2d Art Pack\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\SepiaToneEffect.shader" />
+     <None Include="Assets\2d Art Pack\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\TwirlEffect.shader" />
+     <None Include="Assets\2d Art Pack\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\VortexEffect.shader" />
+     <None Include="Assets\2d Art Pack\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\Contrast Stretch\Adaptation.shader" />
+     <None Include="Assets\2d Art Pack\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\NoiseAndGrain.shader" />
+     <None Include="Assets\2d Art Pack\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\VignettingShader.shader" />
+     <None Include="Assets\2d Art Pack\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\Tonemapper.shader" />
+     <None Include="Assets\2d Art Pack\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\_BloomAndFlares\BrightPassFilter.shader" />
+     <None Include="Assets\2d Art Pack\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\_Antialiasing\FXAA2.shader" />
+     <None Include="Assets\2d Art Pack\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\ColorCorrection3DLut.shader" />
+     <None Include="Assets\2d Art Pack\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\_BloomAndFlares\LensFlareCreate.shader" />
+     <None Include="Assets\2d Art Pack\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\EdgeDetectNormals.shader" />
+     <None Include="Assets\2d Art Pack\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\PrepareSunShaftsBlur.shader" />
+     <None Include="Assets\2d Art Pack\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\_BloomAndFlares\Blend.shader" />
+     <None Include="Assets\2d Art Pack\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\BlendModesOverlay.shader" />
+     <None Include="Assets\Ferr\2DTerrain\Scripts\LibTessDotNet\LibTessDotNet-LICENSE.txt" />
+     <None Include="Assets\2d Art Pack\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\SimpleClear.shader" />
+     <None Include="Assets\Jessie Mobile:Transparent:AlphaBlend.shader" />
+     <None Include="Assets\Ferr\2DTerrain\Shaders\LightmapColored.shader" />
+     <None Include="Assets\2d Art Pack\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\_Antialiasing\FXAA3Console.shader" />
+     <None Include="Assets\Ferr\2DTerrain\Shaders\LitColoredTransparent.shader" />
+     <None Include="Assets\2d Art Pack\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\_Antialiasing\FXAAPreset2.shader" />
+     <None Include="Assets\2d Art Pack\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\_BloomAndFlares\BlurAndFlares.shader" />
+     <None Include="Assets\2d Art Pack\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\_BloomAndFlares\BlendForBloom.shader" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+	   Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  
+</Project>
