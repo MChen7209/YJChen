@@ -27,12 +27,6 @@ public class PlayerController : MonoBehaviour
 
 	private bool isArcher;
 
-
-	public PlayerController()
-	{
-
-	}
-
 	void Awake()
 	{
 		anim = GetComponent<Animator> ();
@@ -170,9 +164,6 @@ public class PlayerController : MonoBehaviour
 		anim.SetBool ("facingRight", facingRight);
 
 		transform.Rotate (0, 180, 0);
-//		Vector3 charScale = transform.localScale;
-//		charScale.x *= -1;
-//		transform.localScale = charScale;
 	}
 
 	void OnTriggerEnter2D(Collider2D col)

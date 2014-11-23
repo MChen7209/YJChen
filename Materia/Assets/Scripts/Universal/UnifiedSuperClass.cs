@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System;
 using System.IO;
+using System.Linq;
 
 public class UnifiedSuperClass : MonoBehaviour 
 {
@@ -10,6 +11,7 @@ public class UnifiedSuperClass : MonoBehaviour
 	ChangeCharacter changeCharacter;
 	WeaponController weaponList;
 	SkillsController skillsController;
+	int equippedCharactersCount;
 
 	int characterLimit;
 	int skillLimit;
@@ -19,40 +21,59 @@ public class UnifiedSuperClass : MonoBehaviour
 
 	//Characters
 	List<Character> characters;									//List of the overall character controller.
-	List<Character> allCharacters;
-//	GameObject wizard;											//The wizard game object.
-//	GameObject warrior;											//The warrior game object.
-//	GameObject archer;											//The archer game object.
-	
-//	List<PlayerHealthController> healthOfCharacters;			//PlayerHealthController copies of each script
+	List<Character> unlockedCharacters;						//List of all unlocked Characters
+	List<Character> allCharacters;								//List of all characters in the game.
 
 	//Weapons
-	List<Weapon> characterWeapons;
 	List<Weapon> weaponInventory;
 
-	//Skills
-	Dictionary<string, List<Skills>> characterSkills;
-
-
-	// Use this for initialization
-	public UnifiedSuperClass()
+	public int CharacterCount
 	{
-		skillsController = new SkillsController();
-		allCharacters = new List<Character>();
-		characterLimit = 3;
-		skillLimit = 3;
+		get	{	return characters.Count;	}
+	}
+
+	public int UnlockedCharacterCount
+	{
+		get	{	return unlockedCharacters.Count;	}
+	}
+
+	public int AllCharacterCount
+	{
+		get	{	return allCharacters.Count;	}
+	}
+
+	public List<Character> Characters
+	{
+		get {	return characters;	}
+	}
+
+	public int CharacterLimit
+	{
+		get	{	return characterLimit;	}
+		set	{	characterLimit = value;	}
+	}
+
+	public int EquippedCharacterCount
+	{
+		get	{	return equippedCharactersCount;		}
+		set	{	equippedCharactersCount = value;	}
 	}
 
 	void Awake () 
 	{
-
+		DontDestroyOnLoad(gameObject);
+		skillsController = new SkillsController();
+		allCharacters = new List<Character>();
+		unlockedCharacters = new List<Character>();
 		characters = new List<Character> ();
-//		healthOfCharacters = new List<PlayerHealthController>();
-		characterWeapons = new List<Weapon>();
-		characterSkills = new Dictionary<string, List<Skills>>();
+		weaponList = new WeaponController();
+		skillsController = new SkillsController();
 		changeCharacter = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<ChangeCharacter>();
+		characterLimit = 3;
+		skillLimit = 3;
+		equippedCharactersCount = 0;
 		loadAdmin();
-		levelControl (); 
+//		levelControl (); 
 	}
 
 	public void levelControl(string[] characters, int[] hp/*, scene information*/)
@@ -68,38 +89,16 @@ public class UnifiedSuperClass : MonoBehaviour
 	}
 	public void levelControl()
 	{
-		//Maybe use hashmap
-		//Separate by Character1, Character2, Character3
-		//Setup a screen in the menu called, setup team
-		//Can do this for weapons and spells as well.
-//		wizard = GameObject.FindGameObjectWithTag ("Wizard");
-//		warrior = GameObject.FindGameObjectWithTag ("Warrior");
-//		archer = GameObject.FindGameObjectWithTag ("Archer");
-//
-//		characters.Add (archer);
-//		characters.Add (warrior);
-//		characters.Add (wizard);
-		addCharacter ("Wizard");
-		addCharacter ("Archer");
-		addCharacter ("Warrior");
+//		addCharacter (allCharacters.Find(e => e.CharacterClass.CompareTo("Wizard") == 0));
+//		addCharacter (allCharacters.Find(e => e.CharacterClass.CompareTo("Archer") == 0));
+//		addCharacter (allCharacters.Find(e => e.CharacterClass.CompareTo("Warrior") == 0));
 
-
-//		characters.ForEach (e => healthOfCharacters.Add (gameObject.AddComponent<PlayerHealthController>()));
-//		for(int i=0; i<characters.Count; i++)
-//		{
-//			healthOfCharacters[i].connectToScript(characters[i]);
-//		}
-
-		characters.ForEach( e => e.HealthController.connectToScript(e));
-//		loadSkills (characters.Find(e => e.CompareTag("Wizard")), "FireBallSkill");
-
-		characters.ForEach(e => {	if(characters.IndexOf(e) == 0) 
-										e.setGameObjectActive(true);
-									else
-										e.setGameObjectActive(false); } ); 
-//
-//		characters[1].setGameObjectActive(false);
-//		characters[2].setGameObjectActive(false);
+		//connect to script after instantiate
+//		characters.ForEach( e => e.HealthController.connectToScript(e));
+//		characters.ForEach(e => {	if(characters.IndexOf(e) == 0) 
+//										e.setGameObjectActive(true);
+//									else
+//										e.setGameObjectActive(false); } ); 
 	}
 
 	public void loadAllCharacters(string fileName)
@@ -117,7 +116,11 @@ public class UnifiedSuperClass : MonoBehaviour
 					if(input != null)
 					{
 						string[] information = input.Split(',');
-						allCharacters.Add ( new Character(information[0], information[1], information[2]));
+//						allCharacters.Add ( new Character(information[0], information[1], information[2], float.Parse(information[3]), float.Parse(information[4])));
+						Debug.Log (information[0] + " " + information[1] + " " + information[2] + " " + information[3] + " " + information[4]);
+						object newCharacter = System.Activator.CreateInstance(Type.GetType(information[1]), information);
+						allCharacters.Add ((Character)newCharacter);
+
 					}
 				}
 				while(input != null);
@@ -131,15 +134,22 @@ public class UnifiedSuperClass : MonoBehaviour
 
 	public void loadWeaponList(string fileName)
 	{
-		weaponList = new WeaponController();
 		weaponList.initialize(fileName);
-		
 	}
 	
 	public void loadSkillList(string fileName)
 	{
-		skillsController = new SkillsController();
 		skillsController.initialize(fileName);
+	}
+
+	public void unlockCharacter(string targetClass)
+	{
+		unlockCharacter (allCharacters.Find(e => e.CharacterClass.CompareTo(targetClass) == 0) as Character);
+	}
+
+	public void unlockCharacter(Character target)
+	{
+		unlockedCharacters.Add (target);
 	}
 
 	public void addCharacter(Character target)
@@ -150,13 +160,16 @@ public class UnifiedSuperClass : MonoBehaviour
 	
 	public void removeCharacter(Character target)
 	{
-		//		if(target != null)
 		characters.Remove (target);
 	}
 
 	public void addCharacter(string loadCharacter)
 	{
-		characters.Add (allCharacters.Find (e => e.CharacterName.CompareTo(loadCharacter) == 0));
+//		Debug.Log(allCharacters.Find ( e => e.CharacterName.CompareTo(loadCharacter) == 0).CharacterName);
+//		Debug.Log("Split");
+//		Debug.Log( allCharacters.Find (e => e.CharacterClass.CompareTo(loadCharacter) == 0));
+		characters.Add (allCharacters.Find (e => e.CharacterClass.CompareTo(loadCharacter) == 0));
+//		characters.ForEach(e => Debug.Log(e.CharacterName));
 	}
 
 	public void removeCharacter(string removeCharacter)
@@ -190,7 +203,6 @@ public class UnifiedSuperClass : MonoBehaviour
 
 	public void removeSkill(Character target, string skill)
 	{
-//		if(skill != null)
 			target.removeSkill(skill);
 	}
 
@@ -219,13 +231,18 @@ public class UnifiedSuperClass : MonoBehaviour
 				return i;
 			}
 		}
-
 		return -1;
 	}
 
-	public List<Character> getAllCharacters()
+	public List<Character> getCurrentCharacters()
 	{
+//		characters.ForEach(e => Debug.Log (e.CharacterName));
 		return characters;
+	}
+
+	public List<Character> getUnlockedCharacters()
+	{
+		return unlockedCharacters;
 	}
 
 	public Character getCharacter(string characterClass)
@@ -235,13 +252,16 @@ public class UnifiedSuperClass : MonoBehaviour
 
 	public Character getCharacterFromSlot(int character)
 	{
-		return characters[character];
+		Debug.Log("inside getCharacterFromSlot: " + character);
+		Debug.Log("character count : " + CharacterCount);
+		if(CharacterCount > 0)
+			return characters[character];
+		else
+			return null;
 	}
 
 	public void setAliveWithGodPowers(GameObject character, bool alive)
 	{
-		//set alive the character in string character
-		//If it is set to all, resurrect all characters that are not alive.
 		if(alive)
 		{
 			PlayerHealthController tempHealthController = getPlayerHealthController(character);
@@ -263,8 +283,6 @@ public class UnifiedSuperClass : MonoBehaviour
 
 	public void setAllCharacterAlive(string command)
 	{
-		//set alive the character in string character
-		//If it is set to all, resurrect all characters that are not alive.
 		if(command.CompareTo("Full") == 0)
 			characters.ForEach(e => { e.HealthController.Alive = true; e.HealthController.HP = e.HealthController.MaxHP; } );
 		else if (command.CompareTo("None") == 0)
@@ -274,27 +292,10 @@ public class UnifiedSuperClass : MonoBehaviour
 	public List<Character> getAllCharactersAlive()
 	{
 		List<Character> currentLiving = new List<Character>();
-//		string currentLiving = "";
-//		put health controllers in character
-//		for(int i=0; i<characters.Count; i++)
-//		{
-//			if(characters[i].HealthController.Alive)
-//				currentLiving.Add(character[i
-//		}
 
 		characters.ForEach( e => { if(e.HealthController.Alive) currentLiving.Add (e); });
 		return currentLiving;
 	}
-
-//	public Character getAllCharactersAlive()
-//	{
-//		List<Character> temp = new List<Character>();
-//
-//		for(int i=0; i<healthOfCharacters.Count; i++)
-//		{
-//
-//		}
-//	}
 
 
 	public bool isAlive(int characterSlot)
@@ -319,11 +320,6 @@ public class UnifiedSuperClass : MonoBehaviour
 	public SkillsController getSkillsController()
 	{
 		return skillsController;
-	}
-
-	public void equipWeapon(Character targetCharacter, Weapon targetWeapon)
-	{
-//		if(targetCharacter.CharacterClass == targetWeapon.
 	}
 
 	IEnumerator ReloadGame()

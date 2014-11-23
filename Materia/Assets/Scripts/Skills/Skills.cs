@@ -35,19 +35,26 @@ public abstract class Skills : MonoBehaviour
 	// Use this for initialization
 	public Skills()
 	{
-//		Debug.Log("INFINITY");
 		secondSkillLock = false;
 		time = 1;
 		power = 0.0f;
 		skillOn = false;
-//		Debug.Log("AND BEYOND");
+		anim = null;
 	}
+
+	public Skills(string name, string type, string skillClass, string desc, float damage)
+	{
+		this.skillName	= name;
+		this.skillType	= type;
+		this.skillClass = skillClass;
+		this.skillDescription = desc;
+		this.skillDamage = damage;
+	}
+
 	void Awake()
 	{
-//		Debug.Log("Fallopian");
 		god = GameObject.FindGameObjectWithTag("God").GetComponent<UnifiedSuperClass>();
 		skillsController = god.getSkillsController();
-//		Debug.Log("Tubes");
 	}
 
 	//protected abstract IEnumerator simulateCooldown();
@@ -66,7 +73,7 @@ public abstract class Skills : MonoBehaviour
 
 	protected IEnumerator simulateCooldown()
 	{
-		object item = Activator.CreateInstance(Type.GetType(skillGUIName));
+//		object item = Activator.CreateInstance(Type.GetType(skillGUIName));
 		skillWait = skillCooldown;
 		for (var x = 1; x < skillCooldown; x++) 
 		{
@@ -78,6 +85,12 @@ public abstract class Skills : MonoBehaviour
 		transform.parent.FindChild ("FireGUI").GetComponent<FireGUI>().endCooldown();
 		isSkillCooldown = false;
 		skillWait = 0;
+	}
+
+	public GameObject SkillOwner
+	{
+		get	{	return skillOwner;	}
+		set	{	skillOwner = value;	}
 	}
 
 	public string SkillName
@@ -100,18 +113,8 @@ public abstract class Skills : MonoBehaviour
 
 	public float SkillDamage
 	{
-		get	{	return SkillDamage;		}
-		set	{	SkillDamage = value;	}
+		get	{	return skillDamage;		}
+		set	{	skillDamage = value;	}
 	}
-
-//	public string getSkillName()			{	return skillName;			}
-//	public string getSkillType()			{	return skillType;			}
-//	public string getSkillDescription()		{	return skillDescription;	}
-//	public float  getSkillDamage()			{	return skillDamage;			}
-//
-//	protected void setSkillName(string sN)				{	skillName = sN;			}
-//	protected void setSkillType(string sT)				{	skillType = sT;			}
-//	protected void setSkillDescription(string sD)		{	skillDescription = sD;	}
-//	public void setSkillDamage(float dmg)				{	skillDamage = dmg;		}
 	protected void setSkillProjectile(string fileName)	{	skillProjectile = Resources.Load("skills/" + fileName) as GameObject; }
 }

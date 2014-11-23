@@ -7,58 +7,71 @@ public class Character : MonoBehaviour
 {
 	//Character administiration
 	PlayerHealthController healthController;
+	bool selected;
 
 	//Character Descriptions
-	string characterName;
-	string characterClass;
-	string characterDescription;
+	string _characterName;
+	string _characterClass;
+	string _characterDescription;
+	GameObject charaGameObject;
 	GameObject characterPrefab;
 
 	//Character Weapon
-	Weapon characterWeapon;
+	Weapon _characterWeapon;
 	string[] applicableWeapons;
 
 	//Character skill
 	List<Skills> characterSkills;
 
 
-	public Character(string name, string type, string description)
+	public Character(string name, string type, string description, float health, float armor)
 	{
-		this.characterName = name;
-		this.characterClass = type;
-		this.characterDescription = description;
-		characterSkills = new List<Skills>();
-		characterWeapon = new Weapon();
+
+		_characterName = name;
+		_characterClass = type;
+		_characterDescription = description;
+		selected = false;
+		healthController = new PlayerHealthController(health, armor);
 		setPlayerPrefab();
+		characterSkills = new List<Skills>();
+		_characterWeapon = new Weapon();
+		//Debug.Log (CharacterName + " " + CharacterClass + " " + CharacterDescription + " " + HealthController.HP + " " + HealthController.Armor);
+//		Debug.Log (_characterName + " " + _characterClass + " " + _characterDescription + " " + healthController.HP + " " + healthController.Armor);
 	}
 
 	public Weapon CharacterWeapon
 	{
-		get	{ 	return characterWeapon; 	}
-		set { 	characterWeapon = value;	}
+		get	{ 	return _characterWeapon; 	}
+		set { 	_characterWeapon = value;	}
 	}
 
 	public string CharacterName
 	{
-		get	{ 	return characterName; 	}
-		set { 	characterName = value;	}
+		get	{ 	return _characterName; 	}
+		set { 	_characterName = value;	}
 	}
 
 	public string CharacterClass
 	{
-		get	{ 	return characterClass; 	}
-		set { 	characterClass = value;	}
+		get	{ 	return _characterClass; 	}
+		set { 	_characterClass = value;	}
 	}
 
 	public string CharacterDescription
 	{
-		get	{ 	return characterDescription; 	}
-		set { 	characterDescription = value;	}
+		get	{ 	return _characterDescription; 	}
+		set { 	_characterDescription = value;	}
 	}
 
 	public GameObject CharacterGameObject
 	{
-		get	{	return characterPrefab;	}
+		get	{	return charaGameObject;	}
+	}
+
+	public bool Selected
+	{
+		get	{	return selected;	}
+		set	{	selected = value;	}
 	}
 
 	public PlayerHealthController HealthController
@@ -71,21 +84,21 @@ public class Character : MonoBehaviour
 		get	{	return characterSkills;	}
 	}
 
-	public void addSkill(Skills skill)				{	characterSkills.Add(skill);			}
+	public void addSkill(Skills skill)				{	characterSkills.Add(skill);	skill.SkillOwner = CharacterGameObject;}
 	public void removeSkill(string skill)			{	characterSkills.Remove (characterSkills.Find (e => e.SkillName.CompareTo(skill) == 0));	}
 	public Skills getSkill(int slot)				{	return characterSkills[slot];		}
 	public List<Skills> getAllSkill(Skills skill)	{	return characterSkills;				}
 	public GameObject getGameObject()				{	return characterPrefab;				}
 	public void setGameObjectActive(bool state)		{	characterPrefab.SetActive(state);	}
 
-//	public void addPlayerAttack()
-//	{
-//		//This isn't needed because I have set the player attack already in their prefabs.
-//	}
-
 	public void setPlayerPrefab()
 	{
-		characterPrefab = Resources.Load("characters/" + characterClass) as GameObject;
+		characterPrefab = Resources.Load("prefabs/characters/" + _characterClass) as GameObject;
+	}
+
+	public void activatePlayerGameObject(Vector3 location)
+	{
+		charaGameObject = Instantiate(characterPrefab, location, Quaternion.identity) as GameObject;
 	}
 
 	public void setWeaponLimits()
@@ -93,7 +106,6 @@ public class Character : MonoBehaviour
 		string fileName = "WeaponLimits.txt";
 		try
 		{
-			//			Debug.Log("File Name: " + getFileName ());
 			StreamReader textReader = new StreamReader(fileName);
 			string input = "";
 			
@@ -107,7 +119,7 @@ public class Character : MonoBehaviour
 						string[] information = input.Split('=');
 						string targetChara = information[0];
 
-						if(targetChara.CompareTo(characterClass) == 0)
+						if(targetChara.CompareTo(_characterClass) == 0)
 							applicableWeapons = information[1].Split(',');
 					}
 				}
@@ -119,9 +131,4 @@ public class Character : MonoBehaviour
 			Debug.Log(e.ToString());
 		}
 	}
-//
-//	public void addPlayerController()
-//	{
-//		//This isn't needed because I have set the player controller already in their prefabs.
-//	}
 }

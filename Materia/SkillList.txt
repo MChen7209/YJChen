@@ -1,1 +1,1 @@
-FireBallSkill,1
+FireBallSkill,attack,Wizard,Simple ball of fire that may be able to light up objects and maybe some enemies, 1

@@ -69,26 +69,6 @@ public class PlayerHealth : MonoBehaviour
 		}
 	}
 
-//	public void setImmunity()
-//	{
-//		immunity = !immunity;
-//	}
-
-//	public bool isAlive()
-//	{
-//		return alive;
-//	}
-//
-//	public void setAlive(bool state)
-//	{
-//		alive = state;
-//	}
-
-//	public void setHP(float amount)
-//	{
-//		health = amount;
-//	}
-
 	public void UpdateHealthBar ()
 	{
 		// Set the health bar's colour to proportion of the way between green and red based on the player's health.
@@ -102,23 +82,8 @@ public class PlayerHealth : MonoBehaviour
 	{
 		if (health <= 0)
 		{
-//			if(transform.parent.CompareTag("Wizard") || transform.parent.CompareTag("Warrior") || transform.parent.CompareTag ("Archer"))
-//			{
-//				alive=false;
-				healthController.Alive = false;
-				god.swapCharacterUponDeath(gameObject);
-//			}
-//			else
-//				Destroy (transform.parent.gameObject);
+			healthController.Alive = false;
+			god.swapCharacterUponDeath(gameObject);
 		}
 	}
-
-//	IEnumerator ReloadGame()
-//	{			
-//		// ... pause briefly
-//		yield return new WaitForSeconds(0);
-//		// ... and then reload the level.
-//		Application.LoadLevel(Application.loadedLevel);
-//		//Also reload health game object.
-//	}
 }

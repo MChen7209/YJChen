@@ -4,7 +4,6 @@ using System.Collections;
 public class Item : MonoBehaviour 
 {
 	//Item stats
-//	float weaponDamage;
 	string itemName;
 	string itemDescription;
 	string itemType;

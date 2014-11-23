@@ -14,7 +14,7 @@ public class LightningStrike : MonoBehaviour
 	// Update is called once per frame
 	public void onTriggerEnter2D(Collider2D target)
 	{
-		if (target.gameObject.tag == "Enemy");
+		if (target.gameObject.tag == "Enemy")
 		{
 			target.gameObject.GetComponentInChildren<PlayerHealth>().TakeDamage(lightningStrikeOBLITERATIONDAMAGE);
 		}

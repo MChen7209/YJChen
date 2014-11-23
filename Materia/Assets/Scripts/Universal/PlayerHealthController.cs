@@ -39,9 +39,10 @@ public class PlayerHealthController : MonoBehaviour
 
 	public void connectToScript(Character target)
 	{
+		Debug.Log(target.CharacterName);
 		belongsTo = target;
 		playerHealthScript = target.CharacterGameObject.GetComponentInChildren<PlayerHealth>();
-		playerHealthScript.setConnection(this);
+		playerHealthScript.setConnection(target.HealthController);
 	}
 
 	private float calculateDamage (float damage)
@@ -95,18 +96,7 @@ public class PlayerHealthController : MonoBehaviour
 	}
 	public float HP
 	{
-		get	{	return HP;	}
-		set	{	HP = value;	}
+		get	{	return health;	}
+		set	{	health = value;	}
 	}
-//	public void setMaxHP(float newMaxHP)  	{  		maxHP = newMaxHP;   	}
-//	public void setArmor(float newArmor)  	{  		armor = newArmor;   	}
-//	public void setAlive(bool setAliveTo) 	{  		alive = setAliveTo; 	}
-//	public void setImmunity(bool state)   	{		immunity = state;		}
-//	public void setHP(float hp)				{		health = hp;			}
-//	public void healHP(float hp)			{		health += hp;			}
-//
-//	public bool isAlive()					{		return alive;			}
-//	public float getHP()					{		return health;			}
-//	public float getMaxHp()					{		return maxHP;			}
-//	public float getArmor()					{		return armor;			}
 }

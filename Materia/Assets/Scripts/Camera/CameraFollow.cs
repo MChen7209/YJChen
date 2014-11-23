@@ -18,7 +18,7 @@ public class CameraFollow : MonoBehaviour
 	{
 		// Setting up the reference.
 		god = GameObject.FindGameObjectWithTag ("God").GetComponent<UnifiedSuperClass> ();
-		currentPlayer = god.getCharacterFromSlot (0).transform;
+//		currentPlayer = god.getCharacterFromSlot (0).transform;
 	}
 
 
@@ -38,7 +38,8 @@ public class CameraFollow : MonoBehaviour
 
 	void FixedUpdate ()
 	{
-		if(god.isAlive (currentPlayer.gameObject))
+		Debug.Log("Inside camera follow fixed update: " + god.CharacterCount);
+		if( (god.CharacterCount > 0) && god.isAlive (currentPlayer.gameObject))
 			TrackPlayer ();
 	}
 

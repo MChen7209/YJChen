@@ -7,24 +7,27 @@ public class FireBallSkill : Skills
 //	private FireballScript fbScriptConnector;
 	private float fireBallDamage;
 
-	public FireBallSkill()
+//	public FireBallSkill()
+//	{
+////		Debug.Log("SUPERIOUS");
+//		initialize("FireBallSkill", "attack", "Wizard", "Simple ball of fire that may be able to light up objects and maybe some enemies", 1f);
+//		skillOwner = god.getCharacter(skillClass).CharacterGameObject;
+////		Debug.Log("INFERIOUS");
+//	}
+	public FireBallSkill(string name, string type, string skillClass, string desc, string damage) : base(name, type, skillClass, desc, float.Parse(damage))
 	{
-//		Debug.Log("SUPERIOUS");
-		initialize("FireBallSkill", "attack", "Wizard", "Simple ball of fire that may be able to light up objects and maybe some enemies", 1f);
-//		Debug.Log("INFERIOUS");
+		setSkillProjectile("FireBall");
 	}
 
-	void Start()
+	public FireBallSkill(string name, string type, string skillClass, string desc, float damage) : base(name, type, skillClass, desc, damage)
 	{
-		skillOwner = god.getCharacter(skillType).CharacterGameObject;
-		Debug.Log("Owner Tag: " + skillOwner.tag);
-		anim = skillOwner.gameObject.GetComponent<Animator>();
-		Debug.Log (anim.GetBool("Holding"));
 		setSkillProjectile("FireBall");
 	}
 
 	public override void skillActivate()
 	{
+		if(anim == null)
+			anim = skillOwner.gameObject.GetComponent<Animator>();
 		//Fix logic, secondSkillLock, Input.getKey logic.
 		if (Input.GetKey ("mouse 0") && !secondSkillLock)
 		{
