@@ -9,7 +9,6 @@ public class SwingController : MonoBehaviour
 	private LineRenderer lr;
 	private bool hooked;
 	private Animator anim;
-	private GameObject anchorObject;
 	private bool pulledHook;
 	private float maxRopeLimit;
 	// Use this for initialization
@@ -26,7 +25,8 @@ public class SwingController : MonoBehaviour
 	// Use this for initialization
 	void Update ()
 	{
-		anchorObject = GameObject.FindGameObjectWithTag ("Anchor").gameObject;
+		anchor = GameObject.FindGameObjectWithTag ("Anchor").gameObject;
+//		Debug.Log(anchor.tag);
 		if (hooked)
 		{
 			if(pulledHook && Input.GetButton ("Jump"))
@@ -90,7 +90,7 @@ public class SwingController : MonoBehaviour
 		}
 		else
 		{
-			anchorObject.transform.position = transform.transform.position;
+			anchor.transform.position = transform.transform.position;
 			anchor.transform.rotation = Quaternion.identity;
 		}
 		

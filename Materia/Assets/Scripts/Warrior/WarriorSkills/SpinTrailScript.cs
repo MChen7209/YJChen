@@ -8,6 +8,7 @@ using System.Collections.Generic;
 public class SpinTrailScript : MonoBehaviour {
 
 	public GameObject attackContainer;
+	Animator anim;
 	private float duration;
 
 	[SerializeField]
@@ -92,6 +93,8 @@ public class SpinTrailScript : MonoBehaviour {
 		
 		_minVertexDistanceSqr = _minVertexDistance * _minVertexDistance;
 		_maxVertexDistanceSqr = _maxVertexDistance * _maxVertexDistance;
+
+		anim = transform.root.GetComponent<Animator>();
 		
 	}
 	
@@ -114,11 +117,13 @@ public class SpinTrailScript : MonoBehaviour {
 			return;
 		}
 
-		if (Input.GetKey("mouse 0") && attackContainer.GetComponent<WarriorAttack> ().getSkill () == 3)
+//		if (Input.GetKey("mouse 0") && attackContainer.GetComponent<WarriorAttack> ().getSkill () == 3)
+		if(Input.GetKey("mouse 0") && (anim.GetInteger("Skill") == 3))
 		{
 			_emit = true;
 		}
-		if (Input.GetButtonUp ("Fire1") && attackContainer.GetComponent<WarriorAttack> ().getSkill () == 3)
+		if(Input.GetButtonUp("Fire1") && (anim.GetInteger ("Skill") == 3))
+//		if (Input.GetButtonUp ("Fire1") && attackContainer.GetComponent<WarriorAttack> ().getSkill () == 3)
 		{
 			_emit = false;
 		}

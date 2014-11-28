@@ -30,12 +30,6 @@ public class PlayerHealthController : MonoBehaviour
 	{
 		god = GameObject.FindGameObjectWithTag ("God").GetComponent<UnifiedSuperClass>();
 	}
-	
-	// Update is called once per frame
-	void Update () 
-	{
-		
-	}
 
 	public void connectToScript(Character target)
 	{

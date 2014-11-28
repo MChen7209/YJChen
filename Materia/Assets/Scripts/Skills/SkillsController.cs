@@ -34,14 +34,10 @@ public class SkillsController : MonoBehaviour
 
 						string[] skillInfo = input.Split(',');
 						string sName = skillInfo[0];
-//						string sType = skillInfo[1];
-//						string sClass = skillInfo[2];
-//						string sDesc = skillInfo[3];
-//						float sDamage = float.Parse(skillInfo[4]);
 
 						object skillScript = System.Activator.CreateInstance(Type.GetType(sName), skillInfo);
 						skillsList.Add(skillScript as Skills);
-//						skillsList.Find (e => e.SkillName.CompareTo(sName) == 0).SkillDamage = sDamage;
+						skillsList.ForEach(e => Debug.Log(e.SkillName));
 					}
 				}
 				while(input != null);
@@ -52,6 +48,13 @@ public class SkillsController : MonoBehaviour
 			Debug.Log(e.ToString());
 		}
 	}
+
+	public List<Skills> AllSkillsList
+	{
+		get	{ return skillsList;	}
+	}
+
+	public void unlockSkill(string skillName)			{	skillsList.Find (e=>e.SkillName.CompareTo(skillName) ==0).SkillUnlocked = true;	}
 
 	public Skills getSkill(string skillName)			{	return skillsList.Find (e => e.SkillName.CompareTo(skillName) == 0); }
 }

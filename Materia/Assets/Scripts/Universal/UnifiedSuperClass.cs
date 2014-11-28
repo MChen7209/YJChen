@@ -59,6 +59,16 @@ public class UnifiedSuperClass : MonoBehaviour
 		set	{	equippedCharactersCount = value;	}
 	}
 
+	public int SkillLimit
+	{
+		get	{	return skillLimit;	}
+		set	{	skillLimit = value;	}
+	}
+
+	public SkillsController SkillsController
+	{
+		get	{	return skillsController;	}
+	}
 	void Awake () 
 	{
 		DontDestroyOnLoad(gameObject);
@@ -76,6 +86,12 @@ public class UnifiedSuperClass : MonoBehaviour
 //		levelControl (); 
 	}
 
+	void Update()
+	{
+//		Debug.Log(characters[0].CharacterName);
+//		Debug.Log(characters[0].CharacterGameObject.tag);
+	}
+
 	public void levelControl(string[] characters, int[] hp/*, scene information*/)
 	{
 		Debug.Log ("Not yet implemented");
@@ -87,18 +103,29 @@ public class UnifiedSuperClass : MonoBehaviour
 		loadSkillList("SkillList.txt");
 		loadAllCharacters("characters/characters.txt");
 	}
-	public void levelControl()
+	public void levelControl(string level)
 	{
-//		addCharacter (allCharacters.Find(e => e.CharacterClass.CompareTo("Wizard") == 0));
-//		addCharacter (allCharacters.Find(e => e.CharacterClass.CompareTo("Archer") == 0));
-//		addCharacter (allCharacters.Find(e => e.CharacterClass.CompareTo("Warrior") == 0));
+		characters.ForEach(e => e.activatePlayerGameObject(new Vector3(0,0,0)));
+		characters.ForEach( e=>	{
+			e.CharacterGameObject.GetComponentInChildren<AttackController>().loadSkills(e.SkillsList);
+		});
 
-		//connect to script after instantiate
-//		characters.ForEach( e => e.HealthController.connectToScript(e));
-//		characters.ForEach(e => {	if(characters.IndexOf(e) == 0) 
-//										e.setGameObjectActive(true);
-//									else
-//										e.setGameObjectActive(false); } ); 
+		characters.ForEach(e => DontDestroyOnLoad(e.CharacterGameObject));
+		Application.LoadLevel(level);
+//		characters.ForEach(e => e.SkillsList.ForEach( c => c.SkillOwner = e.CharacterGameObject));
+		characters.ForEach( e => e.HealthController.connectToScript(e));
+		characters.ForEach(e => e.CharacterGameObject.transform.position =  new Vector3(44,21,0)); //GameObject.FindGameObjectWithTag("StartLocation").transform.position);
+
+		characters.ForEach(e => { if(characters.IndexOf(e) != 0) e.setGameObjectActive(false); });
+
+		characters.ForEach( e=> Debug.Log(e.CharacterName + ": " + characters.IndexOf(e)));
+
+
+		for(int i=0; i<characters.Count; i++)
+		{
+			if(i !=0)
+				characters[i].setGameObjectActive(false);
+		}
 	}
 
 	public void loadAllCharacters(string fileName)
@@ -116,8 +143,7 @@ public class UnifiedSuperClass : MonoBehaviour
 					if(input != null)
 					{
 						string[] information = input.Split(',');
-//						allCharacters.Add ( new Character(information[0], information[1], information[2], float.Parse(information[3]), float.Parse(information[4])));
-						Debug.Log (information[0] + " " + information[1] + " " + information[2] + " " + information[3] + " " + information[4]);
+//						Debug.Log (information[0] + " " + information[1] + " " + information[2] + " " + information[3] + " " + information[4]);
 						object newCharacter = System.Activator.CreateInstance(Type.GetType(information[1]), information);
 						allCharacters.Add ((Character)newCharacter);
 
@@ -152,6 +178,11 @@ public class UnifiedSuperClass : MonoBehaviour
 		unlockedCharacters.Add (target);
 	}
 
+	public void unlockSkill(string skill)
+	{
+		skillsController.unlockSkill(skill);
+	}
+
 	public void addCharacter(Character target)
 	{
 		if(characters.Count < characterLimit) 
@@ -163,13 +194,34 @@ public class UnifiedSuperClass : MonoBehaviour
 		characters.Remove (target);
 	}
 
+	public void updateCharacterList()
+	{
+		characters = new List<Character>();
+
+		unlockedCharacters.ForEach(e => {
+			if(e.Selected)
+				characters.Add(e);
+		});
+	}
+
+	public void updateCharacterEquippedSkills()
+	{
+		List<Skills> tempSkillList = new List<Skills>();
+
+		unlockedCharacters.ForEach(e => {
+				getSkillsbyClass(e.CharacterClass).ForEach( s => {
+					if(s.SkillEquipped)
+						tempSkillList.Add(s);
+				});
+			e.SkillsList = tempSkillList;
+			e.SkillsList.ForEach(s => s.SkillSlot = e.SkillsList.IndexOf(s));
+			tempSkillList = new List<Skills>();
+		});
+	}
+
 	public void addCharacter(string loadCharacter)
 	{
-//		Debug.Log(allCharacters.Find ( e => e.CharacterName.CompareTo(loadCharacter) == 0).CharacterName);
-//		Debug.Log("Split");
-//		Debug.Log( allCharacters.Find (e => e.CharacterClass.CompareTo(loadCharacter) == 0));
 		characters.Add (allCharacters.Find (e => e.CharacterClass.CompareTo(loadCharacter) == 0));
-//		characters.ForEach(e => Debug.Log(e.CharacterName));
 	}
 
 	public void removeCharacter(string removeCharacter)
@@ -226,7 +278,7 @@ public class UnifiedSuperClass : MonoBehaviour
 	{
 		for(int i=0; i<characters.Count; i++)
 		{
-			if(characters[i].gameObject == target)
+			if(characters[i].CharacterGameObject == target)
 			{
 				return i;
 			}
@@ -236,7 +288,6 @@ public class UnifiedSuperClass : MonoBehaviour
 
 	public List<Character> getCurrentCharacters()
 	{
-//		characters.ForEach(e => Debug.Log (e.CharacterName));
 		return characters;
 	}
 
@@ -252,8 +303,6 @@ public class UnifiedSuperClass : MonoBehaviour
 
 	public Character getCharacterFromSlot(int character)
 	{
-		Debug.Log("inside getCharacterFromSlot: " + character);
-		Debug.Log("character count : " + CharacterCount);
 		if(CharacterCount > 0)
 			return characters[character];
 		else
@@ -305,7 +354,7 @@ public class UnifiedSuperClass : MonoBehaviour
 
 	public bool isAlive(GameObject charac)
 	{
-		return characters.Find(e => e.tag.Contains (charac.tag));
+		return characters.Find(e => e.CharacterGameObject.tag.Contains (charac.tag));
 	}
 
 	public void setCheckPoint()
@@ -317,10 +366,9 @@ public class UnifiedSuperClass : MonoBehaviour
 		return null;
 	}
 
-	public SkillsController getSkillsController()
-	{
-		return skillsController;
-	}
+
+
+	public List<Skills> getSkillsbyClass(string characterClass)	{	return skillsController.AllSkillsList.FindAll(e => e.SkillClass.CompareTo(characterClass) == 0); }
 
 	IEnumerator ReloadGame()
 	{			

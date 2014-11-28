@@ -1,30 +1,30 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Universal/Character.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Wizard/AttackController.cs">
     <Files>
-      <File FileName="Assets/Scripts/MainMenu/Menu.cs" Line="178" Column="1" />
       <File FileName="Assets/Scripts/Camera/CameraFollow.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/Universal/PlayerHealthController.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Weapons/Weapon.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Weapons/Item.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Universal/UnifiedSuperClass.cs" Line="94" Column="1" />
-      <File FileName="Assets/Scripts/Weapons/WeaponController.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Skills/SkillsController.cs" Line="42" Column="7" />
+      <File FileName="Assets/Scripts/Universal/UnifiedSuperClass.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Skills/SkillsController.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/Skills/Skills.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Wizard/SKills/FireballScript.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Wizard/FireballSkill/FireBallSkill.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Wizard/LightBallUtility/LightBallUtility.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Universal/Character.cs" Line="37" Column="101" />
-      <File FileName="Assets/Scripts/Wizard/Wizard.cs" Line="4" Column="1" />
+      <File FileName="Assets/Scripts/Wizard/Wizard.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/Universal/ChangeCharacter.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/Universal/PlayerHealth.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Wizard/AttackController.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Wizard/AttackController.cs" Line="88" Column="70" />
       <File FileName="Assets/Scripts/Archer/Arrow.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/Enemies/WarriorAI/DamagePlayer.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/MainMenu/NewGameScript.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/MainMenu/ButtonBase.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/Warrior/Warrior.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Archer/Archer.cs" Line="6" Column="15" />
+      <File FileName="Assets/Scripts/Archer/Archer.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Warrior/WarriorSkills/SpinTrailScript.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Archer/SwingController.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Universal/Remover.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/MainMenu/Menu.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Archer/HookShot.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Universal/Character.cs" Line="1" Column="1" />
+      <File FileName="../COSC4358-GameDev/Game/Materia/Assets/Scripts/Wizard/WizardAttack.cs" Line="134" Column="34" />
+      <File FileName="Assets/Scripts/Wizard/SKills/FireballScript.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

@@ -11,9 +11,11 @@ public abstract class Skills : MonoBehaviour
 	protected bool secondSkillLock;
 	protected float time;
 	protected GameObject progressBar;
-	protected bool skillOn;
-
-	protected GameObject skillOwner;
+	protected bool skillEquipped;
+	protected bool skillUnlocked;
+	protected int mySlot;
+	
+//	protected GameObject skillOwner;
 
 	//Skill Details
 	protected string skillName;
@@ -38,23 +40,36 @@ public abstract class Skills : MonoBehaviour
 		secondSkillLock = false;
 		time = 1;
 		power = 0.0f;
-		skillOn = false;
+		skillEquipped = false;
 		anim = null;
+		isSkillCooldown = false;
 	}
 
-	public Skills(string name, string type, string skillClass, string desc, float damage)
+	public Skills(string name, string type, string classSkill, string desc, float damage, float cooldown)
 	{
-		this.skillName	= name;
-		this.skillType	= type;
-		this.skillClass = skillClass;
-		this.skillDescription = desc;
-		this.skillDamage = damage;
+		skillName	= name;
+		skillType	= type;
+		skillClass = classSkill;
+		skillDescription = desc;
+		skillDamage = damage;
+
+		secondSkillLock = false;
+		time = 1;
+		power = 0.0f;
+		skillEquipped = false;
+		anim = null;
+		isSkillCooldown = false;
 	}
 
 	void Awake()
 	{
 		god = GameObject.FindGameObjectWithTag("God").GetComponent<UnifiedSuperClass>();
-		skillsController = god.getSkillsController();
+		skillsController = god.SkillsController;
+	}
+
+	void Update()
+	{
+//		Debug.Log(skillName);
 	}
 
 	//protected abstract IEnumerator simulateCooldown();
@@ -62,14 +77,14 @@ public abstract class Skills : MonoBehaviour
 	protected abstract void ButtonDown();
 	protected abstract void ButtonUp();
 
-	protected void initialize(string name, string type, string skillClass, string description, float damage)
-	{
-		this.skillName = name;
-		this.skillType = type;
-		this.skillClass = skillClass;
-		this.skillDescription = description;
-		this.skillDamage = damage;
-	}
+//	protected void initialize(string name, string type, string skillClass, string description, float damage)
+//	{
+//		this.skillName = name;
+//		this.skillType = type;
+//		this.skillClass = skillClass;
+//		this.skillDescription = description;
+//		this.skillDamage = damage;
+//	}
 
 	protected IEnumerator simulateCooldown()
 	{
@@ -82,16 +97,16 @@ public abstract class Skills : MonoBehaviour
 //			transform.parent.FindChild ("FireGUI").GetComponent<(Skills)skillGUIName>().startCooldown(fireBallWait);
 			yield return new WaitForSeconds(1);
 		}//end for
-		transform.parent.FindChild ("FireGUI").GetComponent<FireGUI>().endCooldown();
+		//transform.parent.FindChild ("FireGUI").GetComponent<FireGUI>().endCooldown();
 		isSkillCooldown = false;
 		skillWait = 0;
 	}
 
-	public GameObject SkillOwner
-	{
-		get	{	return skillOwner;	}
-		set	{	skillOwner = value;	}
-	}
+//	public GameObject SkillOwner
+//	{
+//		get	{	return skillOwner;	}
+//		set	{	skillOwner = value;	}
+//	}
 
 	public string SkillName
 	{
@@ -116,5 +131,33 @@ public abstract class Skills : MonoBehaviour
 		get	{	return skillDamage;		}
 		set	{	skillDamage = value;	}
 	}
-	protected void setSkillProjectile(string fileName)	{	skillProjectile = Resources.Load("skills/" + fileName) as GameObject; }
+
+	public string SkillClass
+	{
+		get	{	return skillClass;	}
+		set	{	skillClass = value;	}
+	}
+
+	public bool SkillEquipped
+	{
+		get	{	return skillEquipped;	}
+		set	{	skillEquipped = value;	}
+	}
+
+	public bool SkillUnlocked
+	{
+		get	{	return skillUnlocked;	}
+		set	{	skillUnlocked = value;	}
+	}
+
+	public int SkillSlot
+	{
+		get {	return mySlot;	}
+		set	{	mySlot = value;	}
+	}
+
+	protected void setSkillProjectile(/*string targetSkillName*/)	{	skillProjectile = Resources.Load("skills/" + skillName/*targetSkillName*/) as GameObject; }
+	protected void setSkillProjectile(string targetSkillName)	{	skillProjectile = Resources.Load("skills/" + targetSkillName) as GameObject;
+		Debug.Log(skillProjectile.tag);
+	}
 }

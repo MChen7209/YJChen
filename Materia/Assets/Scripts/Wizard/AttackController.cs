@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using System;
 
 public class AttackController : MonoBehaviour 
 {
@@ -9,9 +10,10 @@ public class AttackController : MonoBehaviour
 	private bool secondSkillLock;
 	private UnifiedSuperClass god;
 	private SkillsController skillsController;
+	bool skillLock;
 
-	private List<Skills> skills;
-	private List<Skills> utility;
+	private List<Skills> _skills;
+	private List<Skills> _utility;
 
 	public float power = 0.0F;
 	private Vector3 mousePos;
@@ -29,30 +31,40 @@ public class AttackController : MonoBehaviour
 	void Start()
 	{
 		secondSkillLock = false;
+		skillLock = false;
 		time = 1;
+		transform.root.FindChild("IceRadius").gameObject.SetActive (false);
 //		progressBar.renderer.enabled = false;
 //		tempLightBallOn = false;
 	}
 
 	void Awake () 
 	{
-		skills = new List<Skills>();
-		utility = new List<Skills>();
+		_skills = new List<Skills>();
+		_utility = new List<Skills>();
 		god = GameObject.FindGameObjectWithTag("God").GetComponent<UnifiedSuperClass>();
-		skillsController = god.getSkillsController();
+		skillsController = god.SkillsController;
 
 		anim = transform.parent.gameObject.GetComponent<Animator> ();
 		anim.SetInteger ("Skill", 1);
 		currentSkill = anim.GetInteger ("Skill");
 	}
 
-	public void loadSkills(string skillName, string type)
+	public void loadSkills(List<Skills> loadSkills)
 	{
-
+		_skills = loadSkills;
+		_skills.ForEach(e => {
+			gameObject.AddComponent(e.SkillName);
+		});
+//		_skills.ForEach(e => gameObject.AddComponent<Skills>());
+//		RAWR THIS is THE PROBLEM//		_skills.ForEach(e => gameObject.AddComponent<Skills>() = e);
 	}
 	
 	void Update () 
 	{
+		if(skillLock || secondSkillLock)	//This makes it so you can't change skills when using skills.
+			return;
+
 		currentSkill = anim.GetInteger ("Skill");
 
 		if (Input.GetKeyDown (KeyCode.Alpha1))
@@ -70,11 +82,17 @@ public class AttackController : MonoBehaviour
 		if (anim.GetBool ("skillLock") == true)
 			return;
 
-		if(!secondSkillLock && (skills.Count > 0))
-			skills[currentSkill-1].skillActivate();
+////		Debug.Log(_skills.Count);
+//		if(!secondSkillLock && (_skills.Count > 0))
+//			_skills[currentSkill-1].skillActivate();
+//
+//		if(_utility.Count > 0)
+//			_utility[currentSkill-1].skillActivate();
+		mousePos = Camera.main.WorldToScreenPoint (transform.position);
+		Vector3 dir = Input.mousePosition - mousePos;
+		float angle = Mathf.Atan2 (dir.y, dir.x) * Mathf.Rad2Deg;
+		transform.rotation = Quaternion.AngleAxis (angle, Vector3.forward);
 
-		if(utility.Count >0)
-			utility[currentSkill-1].skillActivate();
 	}
 
 	public void setSecondSkillLock(bool state)	{	secondSkillLock = state;	}

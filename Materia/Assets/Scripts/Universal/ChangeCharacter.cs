@@ -22,13 +22,14 @@ public class ChangeCharacter : MonoBehaviour
 
 		characters = god.getCurrentCharacters();
 		camera = GetComponent<CameraFollow>();
-		Debug.Log("Characters size " + characters.Count);
+//		Debug.Log("Characters size " + characters.Count);
 		current = characters[0].CharacterGameObject;
 		lastSafeLocation = current.transform.position;
 	}
 
 	void Update()
 	{
+//		Debug.Log("Current: " + current.tag);
 		if(god.CharacterCount == 0)
 			return;
 

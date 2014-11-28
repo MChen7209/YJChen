@@ -14,11 +14,12 @@ public class CameraFollow : MonoBehaviour
 
 	private Transform currentPlayer;		// Reference to the player's transform.
 
-	void Start ()
+	void Awake ()
 	{
 		// Setting up the reference.
 		god = GameObject.FindGameObjectWithTag ("God").GetComponent<UnifiedSuperClass> ();
-//		currentPlayer = god.getCharacterFromSlot (0).transform;
+		currentPlayer = god.getCharacterFromSlot (0).CharacterGameObject.transform;
+//		Debug.Log(currentPlayer.tag);
 	}
 
 
@@ -38,7 +39,8 @@ public class CameraFollow : MonoBehaviour
 
 	void FixedUpdate ()
 	{
-		Debug.Log("Inside camera follow fixed update: " + god.CharacterCount);
+//		Debug.Log("Inside camera follow fixed update: " + god.CharacterCount);
+//		Debug.Log (currentPlayer.gameObject.ToString());
 		if( (god.CharacterCount > 0) && god.isAlive (currentPlayer.gameObject))
 			TrackPlayer ();
 	}

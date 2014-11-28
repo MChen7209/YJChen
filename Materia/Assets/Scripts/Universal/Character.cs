@@ -8,6 +8,8 @@ public class Character : MonoBehaviour
 	//Character administiration
 	PlayerHealthController healthController;
 	bool selected;
+	int loadedSkills;
+	int skillLimit;
 
 	//Character Descriptions
 	string _characterName;
@@ -23,7 +25,6 @@ public class Character : MonoBehaviour
 	//Character skill
 	List<Skills> characterSkills;
 
-
 	public Character(string name, string type, string description, float health, float armor)
 	{
 
@@ -35,8 +36,7 @@ public class Character : MonoBehaviour
 		setPlayerPrefab();
 		characterSkills = new List<Skills>();
 		_characterWeapon = new Weapon();
-		//Debug.Log (CharacterName + " " + CharacterClass + " " + CharacterDescription + " " + HealthController.HP + " " + HealthController.Armor);
-//		Debug.Log (_characterName + " " + _characterClass + " " + _characterDescription + " " + healthController.HP + " " + healthController.Armor);
+		loadedSkills = 0;
 	}
 
 	public Weapon CharacterWeapon
@@ -81,24 +81,33 @@ public class Character : MonoBehaviour
 
 	public List<Skills> SkillsList
 	{
-		get	{	return characterSkills;	}
+		get	{	return characterSkills;		}
+		set	{	characterSkills = value;	}
 	}
 
-	public void addSkill(Skills skill)				{	characterSkills.Add(skill);	skill.SkillOwner = CharacterGameObject;}
+	public int SkillLimit
+	{
+		get	{	return skillLimit;	}
+		set	{	skillLimit = value;	}
+	}
+
+	public void addSkill(Skills skill)				{	characterSkills.Add(skill);	/*skill.SkillOwner = CharacterGameObject;*/ skill.SkillEquipped = true;}
 	public void removeSkill(string skill)			{	characterSkills.Remove (characterSkills.Find (e => e.SkillName.CompareTo(skill) == 0));	}
 	public Skills getSkill(int slot)				{	return characterSkills[slot];		}
 	public List<Skills> getAllSkill(Skills skill)	{	return characterSkills;				}
 	public GameObject getGameObject()				{	return characterPrefab;				}
-	public void setGameObjectActive(bool state)		{	characterPrefab.SetActive(state);	}
+	public void setGameObjectActive(bool state)		{	charaGameObject.SetActive(state);	}
 
 	public void setPlayerPrefab()
 	{
 		characterPrefab = Resources.Load("prefabs/characters/" + _characterClass) as GameObject;
+//		Debug.Log(characterPrefab.tag);
 	}
 
 	public void activatePlayerGameObject(Vector3 location)
 	{
 		charaGameObject = Instantiate(characterPrefab, location, Quaternion.identity) as GameObject;
+//		charaGameObject.transform.position = new Vector3(0,0,0);
 	}
 
 	public void setWeaponLimits()
