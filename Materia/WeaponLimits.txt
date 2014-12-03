@@ -1,0 +1,3 @@
+Wizard=Staff
+Archer=Bow
+Warrior=Sword

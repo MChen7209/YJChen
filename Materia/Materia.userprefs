@@ -1,0 +1,24 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Wizard/SKills/LightningStrikeSkill.cs">
+    <Files>
+      <File FileName="Assets/Scripts/Wizard/SKills/LightningStrikeSkill.cs" Line="39" Column="1" />
+      <File FileName="../COSC4358-GameDev/Game/Materia/Assets/Scripts/Wizard/WizardAttack.cs" Line="348" Column="49" />
+      <File FileName="Assets/Scripts/Wizard/SKills/LightBallUtility.cs" Line="76" Column="3" />
+      <File FileName="Assets/Scripts/Wizard/SKills/FireBallSkill.cs" Line="41" Column="46" />
+      <File FileName="Assets/Scripts/Skills/SkillsController.cs" Line="59" Column="105" />
+      <File FileName="Assets/Scripts/MainMenu/Menu.cs" Line="23" Column="52" />
+      <File FileName="Assets/Scripts/Skills/Skills.cs" Line="136" Column="46" />
+      <File FileName="Assets/Scripts/Universal/UnifiedSuperClass.cs" Line="112" Column="32" />
+      <File FileName="Assets/Scripts/Universal/Character.cs" Line="40" Column="41" />
+      <File FileName="Assets/Scripts/Wizard/Wizard.cs" Line="8" Column="5" />
+      <File FileName="Assets/Scripts/Universal/PlayerHealthController.cs" Line="36" Column="5" />
+      <File FileName="Assets/Scripts/Wizard/AttackController.cs" Line="57" Column="64" />
+      <File FileName="Assets/Scripts/Camera/CameraFollow.cs" Line="21" Column="1" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>
