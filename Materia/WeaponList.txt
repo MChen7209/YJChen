@@ -1,3 +1,0 @@
-Wooden Sword,Sword,A Simple Wooden Sword,1
-Wooden Staff,Staff,A Simple Wooden Staff,1
-Wooden Bow,Bow,A Simple Wooden Bow,1

@@ -1,4 +1,0 @@
-FireBallSkill,attack,Wizard,Simple ball of fire that may be able to light up objects and maybe some enemies.,1,5
-LightBallUtility,utility,Wizard,The path can be found even in the darkest of zones… when one only remembers to turn on the light.,0,0
-LightningStrikeSkill,attack,Wizard,A node of energy that calls down a lightning strike from the skies.,20,5
-IceBallSkill,attack,Wizard,A icy glacier that freezes enemies and specific objects.,0,5

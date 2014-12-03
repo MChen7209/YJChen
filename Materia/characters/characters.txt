@@ -1,3 +1,0 @@
-Gundelf,Wizard,A powerful elemental master.,100,0
-Mysteria,Archer,A mysterious and evasive sniper.,100,10
-Blueray Flankins,Warrior,A reckless and powerful warrior.,100,50
